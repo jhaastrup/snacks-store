@@ -1,5 +1,5 @@
 // src/App.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/Header';
 import  ProductCard,  { Product } from './components/ProductCard';
 import Cart, { CartItem } from './components/Cart'; 
@@ -31,7 +31,7 @@ interface AlatPayVirtualAccountResponse {
 }
 
 // Define the structure for the ALATPay transaction status response
-interface AlatPayTransactionStatusResponse {
+/* interface AlatPayTransactionStatusResponse {
   status: boolean;
   message: string;
   data?: {
@@ -41,7 +41,7 @@ interface AlatPayTransactionStatusResponse {
     currency: string;
     // Other fields might be present
   };
-}
+} */
 
 function App() {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -197,7 +197,7 @@ function App() {
     }
   };
 
-  const checkTransactionStatus = async () => {
+ /*  const checkTransactionStatus = async () => {
     if (!paymentDetails || !paymentDetails.transactionId) {
       setError("No transaction ID available to check status.");
       return;
@@ -237,7 +237,7 @@ function App() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }; */
 
   const closePaymentModal = () => {
     setShowPaymentModal(false);
@@ -346,7 +346,7 @@ function App() {
                 disabled={isLoading}
               >
                 {isLoading ? 'Checking Status...' : 'Check Payment Status'}
-              </button> */}
+              </button>  */}
               <button
                 onClick={closePaymentModal}
                 className="bg-blue-600 text-white px-6 py-3 rounded-full w-full hover:bg-blue-700 transition duration-300 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"

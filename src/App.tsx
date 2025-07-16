@@ -1,9 +1,9 @@
 // src/App.tsx
 import React, { useState } from 'react';
 import Header from './components/Header';
-import  ProductCard,  { Product } from './components/ProductCard'; // Import Product interface
-import Cart, { CartItem } from './components/Cart'; // Import CartItem interface
-import './index.css'; // Make sure to import Tailwind CSS
+import  ProductCard,  { Product } from './components/ProductCard';
+import Cart, { CartItem } from './components/Cart'; 
+import './index.css';
 
 
 // DO NOT EXPOSE YOUR ALATPAY_API_KEY AND ALATPAY_BUSINESS_ID DIRECTLY IN CLIENT-SIDE CODE IN PRODUCTION!
@@ -169,8 +169,7 @@ function App() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-         'Ocp-Apim-Subscription-Key': ALATPAY_API_KEY, // Corrected header for API Key/ ALATPay might use Bearer token or other auth
-          // Add any other required headers like 'x-api-key' if specified by ALATPay docs
+         'Ocp-Apim-Subscription-Key': ALATPAY_API_KEY, // which is actually your ALATPay API Key
         },
         body: JSON.stringify(payload),
       });
@@ -212,8 +211,8 @@ function App() {
       const response = await fetch(`${ALATPAY_BASE_URL}/bank-transfer/api/v1/bankTransfer/transactions/${paymentDetails.transactionId}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${ALATPAY_API_KEY}`, // ALATPay might use Bearer token or other auth
-          // Add any other required headers
+           'Content-Type': 'application/json',
+          'Ocp-Apim-Subscription-Key': ALATPAY_API_KEY, // which is actually your ALATPay API Key
         },
       });
 
